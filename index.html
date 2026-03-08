@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MPX NJ — Deal of the Night</title>
+
+  <!-- GSAP Core + Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js?v=r4k9x1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js?v=r4k9x1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/CustomEase.min.js?v=r4k9x1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/DrawSVGPlugin.min.js?v=r4k9x1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/MotionPathPlugin.min.js?v=r4k9x1"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=r4k9x1">
+</head>
+<body>
+  <div id="scene">
+
+    <!-- Layer 0: Background image -->
+    <div id="background"></div>
+
+    <!-- Layer 1: Animated grain overlay -->
+    <canvas id="grain-canvas"></canvas>
+
+    <!-- Layer 2: The X fracture lines (SVG, structural reveal element) -->
+    <svg id="x-lines" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- Diagonal line 1: top-left to bottom-right -->
+      <line id="x-line-a" x1="-50" y1="-50" x2="1970" y2="1130" stroke="#c9a84c" stroke-width="1.5" opacity="0" stroke-dasharray="2800" stroke-dashoffset="2800"/>
+      <!-- Diagonal line 2: top-right to bottom-left -->
+      <line id="x-line-b" x1="1970" y1="-50" x2="-50" y2="1130" stroke="#c9a84c" stroke-width="1.5" opacity="0" stroke-dasharray="2800" stroke-dashoffset="2800"/>
+      <!-- Horizontal rule top -->
+      <line id="rule-top" x1="80" y1="60" x2="1840" y2="60" stroke="#c9a84c" stroke-width="0.75" opacity="0"/>
+      <!-- Horizontal rule bottom -->
+      <line id="rule-bot" x1="80" y1="1020" x2="1840" y2="1020" stroke="#c9a84c" stroke-width="0.75" opacity="0"/>
+    </svg>
+
+    <!-- Layer 3: Spotlight halo -->
+    <div id="spotlight-halo"></div>
+
+    <!-- Layer 4: Product stage -->
+    <div id="products-container"></div>
+
+    <!-- Layer 5: Gold scan sweep (transition element) -->
+    <div id="scan-sweep"></div>
+
+    <!-- Layer 6: Foreground corner ornaments -->
+    <svg id="corner-ornaments" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- Top-left corner bracket -->
+      <g id="corner-tl" opacity="0">
+        <line x1="60" y1="90" x2="60" y2="40" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="40" y1="60" x2="110" y2="60" stroke="#c9a84c" stroke-width="1.5"/>
+      </g>
+      <!-- Top-right corner bracket -->
+      <g id="corner-tr" opacity="0">
+        <line x1="1860" y1="90" x2="1860" y2="40" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="1810" y1="60" x2="1880" y2="60" stroke="#c9a84c" stroke-width="1.5"/>
+      </g>
+      <!-- Bottom-left corner bracket -->
+      <g id="corner-bl" opacity="0">
+        <line x1="60" y1="990" x2="60" y2="1040" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="40" y1="1020" x2="110" y2="1020" stroke="#c9a84c" stroke-width="1.5"/>
+      </g>
+      <!-- Bottom-right corner bracket -->
+      <g id="corner-br" opacity="0">
+        <line x1="1860" y1="990" x2="1860" y2="1040" stroke="#c9a84c" stroke-width="1.5"/>
+        <line x1="1810" y1="1020" x2="1880" y2="1020" stroke="#c9a84c" stroke-width="1.5"/>
+      </g>
+    </svg>
+
+    <!-- Layer 7: UI / Branding -->
+    <div id="ui-layer">
+      <!-- MPX Brand header -->
+      <div id="brand-header">
+        <div id="mpx-wordmark">MPX</div>
+        <div id="brand-sub">NEW JERSEY</div>
+      </div>
+
+      <!-- Tagline: "Tonight Only" style -->
+      <div id="promo-tag">DEAL OF THE NIGHT</div>
+    </div>
+
+  </div>
+
+  <script src="animation.js?v=r4k9x1"></script>
+</body>
+</html>

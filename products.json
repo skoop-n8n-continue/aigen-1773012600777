@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "id": "2667738",
+      "name": "Citradelic Sunset | 3.5g",
+      "online_title": "Citradelic Sunset | 3.5g",
+      "brand": "Anthologie",
+      "category": "Whole Flower",
+      "price": "50",
+      "discounted_price": 20,
+      "image_url": "https://skoop-general.s3.us-east-1.amazonaws.com/n8n_image_gen%2Fundefined-1773010741032.png",
+      "strain": "Citradelic Sunset",
+      "strain_type": "Sativa",
+      "meta": "Whole Flower · 3.5g"
+    },
+    {
+      "id": "2704942",
+      "name": "4:1 Pomegranate Pearls",
+      "online_title": "Gron 4:1 Pomegranate Pearls 10mg x 10-Pack",
+      "brand": "Grön",
+      "category": "Gummies",
+      "price": "32",
+      "discounted_price": 0,
+      "image_url": "https://leaflogixmedia.blob.core.windows.net/product-image/33fde070-45ca-42f6-b515-735dd696bcfe.jpg",
+      "strain": "Hybrid",
+      "strain_type": "Hybrid",
+      "meta": "CBD 10mg · THC 2.83mg · 10-Pack"
+    }
+  ]
+}

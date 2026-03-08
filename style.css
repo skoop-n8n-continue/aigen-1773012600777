@@ -1,0 +1,391 @@
+/* =====================================================
+   MPX NJ — Deal of the Night
+   Dark Gold Luxury Cannabis Promo Template
+   ===================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold:        #c9a84c;
+  --gold-bright: #f0c96a;
+  --gold-dim:    #7a5f25;
+  --gold-glow:   rgba(201, 168, 76, 0.15);
+  --black:       #080808;
+  --black-mid:   #111111;
+  --white:       #f5f0e8;
+  --red-sale:    #c0392b;
+  --red-bright:  #e74c3c;
+  --text-light:  rgba(245, 240, 232, 0.72);
+
+  --scene-w: 1920px;
+  --scene-h: 1080px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ---- SCENE ---- */
+#scene {
+  width: var(--scene-w);
+  height: var(--scene-h);
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ---- BACKGROUND ---- */
+#background {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/n8n-continue%2Faigen-1773012600777%2Fassets%2Fmpx_bg_dark_gold-1773012683747.png');
+  background-size: cover;
+  background-position: center bottom;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* ---- GRAIN ---- */
+#grain-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+}
+
+/* ---- SVG X LINES ---- */
+#x-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#x-line-a,
+#x-line-b {
+  opacity: 0;
+  stroke-dasharray: 2800;
+  stroke-dashoffset: 2800;
+}
+
+/* ---- SPOTLIGHT HALO ---- */
+#spotlight-halo {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(201, 168, 76, 0.18) 0%,
+    rgba(201, 168, 76, 0.07) 35%,
+    transparent 70%
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- SCAN SWEEP ---- */
+#scan-sweep {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(201, 168, 76, 0.6),
+    rgba(240, 201, 106, 0.9),
+    rgba(201, 168, 76, 0.6),
+    transparent
+  );
+  z-index: 25;
+  opacity: 0;
+  filter: blur(2px);
+  box-shadow: 0 0 40px 20px rgba(201, 168, 76, 0.3);
+  pointer-events: none;
+}
+
+/* ---- CORNER ORNAMENTS ---- */
+#corner-ornaments {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ---- PRODUCTS CONTAINER ---- */
+#products-container {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ---- PRODUCT CARD ---- */
+.product-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Product card layout: image left, info right (when featured) */
+.product-card.layout-featured {
+  flex-direction: row;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Product image wrapper */
+.product-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.product-image {
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 60px rgba(201, 168, 76, 0.25));
+}
+
+/* Spotlight circle behind image */
+.product-img-wrap::before {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(201, 168, 76, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Product info block */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.product-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.product-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-transform: uppercase;
+  max-width: 520px;
+}
+
+.product-category {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 400;
+}
+
+/* Price block */
+.product-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.price-original {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.35);
+  text-decoration: line-through;
+  text-decoration-color: rgba(192, 57, 43, 0.8);
+  letter-spacing: 0.02em;
+}
+
+.price-sale {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--gold-bright);
+  filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.5));
+  position: relative;
+}
+
+.price-sale .currency {
+  font-size: 44px;
+  vertical-align: top;
+  margin-top: 14px;
+  display: inline-block;
+  color: var(--gold);
+}
+
+/* Savings badge */
+.savings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red-sale);
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  padding: 6px 18px 4px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.savings-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+}
+
+/* Product meta / strain info */
+.product-meta-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  opacity: 0.5;
+  margin-top: 6px;
+}
+
+/* Gold divider line */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 8px 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ---- UI LAYER ---- */
+#ui-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Brand header */
+#brand-header {
+  position: absolute;
+  top: 44px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+}
+
+#mpx-wordmark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  line-height: 1;
+  filter: drop-shadow(0 0 16px rgba(201, 168, 76, 0.4));
+}
+
+#brand-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-left: 3px;
+}
+
+/* Promo tag */
+#promo-tag {
+  position: absolute;
+  top: 52px;
+  right: 80px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  opacity: 0;
+  border-right: 2px solid var(--gold-dim);
+  padding-right: 16px;
+}
+
+/* ---- TRANSITION FLASH ---- */
+.scene-flash {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- SLOT MACHINE DIGIT ---- */
+.slot-digit-wrap {
+  overflow: hidden;
+  display: inline-block;
+  height: 1em;
+  vertical-align: bottom;
+}
+
+.slot-digit-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ---- RESPONSIVE SCALE ---- */
+@media (max-width: 1920px) {
+  #scene {
+    transform-origin: top left;
+  }
+}
